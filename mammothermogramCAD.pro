@@ -14,22 +14,22 @@ win32{
         ##Definir no path do sistema uma variavel chamada OPENCV_INCLUDE com o caminho dos includes do opencv, por exemplo: C:\OpenCV2.4\build\include
         ##Definir no path do sistema uma variavel chamada OPENCV_LIB com o caminho das libs do opencv, por exemplo: C:\OpenCV2.4\build\x86\vc10\lib
 
-        CV_INCLUDE = %OPENCV_INCLUDE%
-        CV_LIB = %OPENCV_LIB%
-}
+        #CV_INCLUDE = %OPENCV_INCLUDE%
+        #CV_LIB = %OPENCV_LIB%
 
-unix{
-
-
+        CV_INCLUDE = "C:\Program Files\OpenCV-2.1.0\include\opencv"
+        CV_LIB = "C:\Program Files\OpenCV-2.1.0\build\lib\Debug"
 }
 
 message(build with opencv 2.4.1)
-INCLUDEPATH += $$CV_INCLUDE\opencv
+INCLUDEPATH += $$CV_INCLUDE
+DEPENDPATH += $$CV_INCLUDE
 LIBS += -L$$CV_LIB
-LIBS += -lopencv_imgproc241 -lopencv_highgui241 -lopencv_core241
+LIBS += -lcv210d -lcxcore210d -lhighgui210d
 
-SOURCES += main.cpp mainwindow.cpp
-HEADERS  += mainwindow.h
+SOURCES += main.cpp mainwindow.cpp \
+    thermogram.cpp
+HEADERS  += mainwindow.h \
+    thermogram.h
 FORMS    += mainwindow.ui
-
 
